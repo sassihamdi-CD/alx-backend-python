@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
-"""Contains a method that spawns Tasks n times with a
-specified delay between each call."""
+""" a python module to loop 10 times """
+import random
 import asyncio
-from typing import List
-
-task_wait_random = __import__('3-tasks').task_wait_random
+from typing import Generator
 
 
-async def task_wait_n(n: int, max_delay: int) -> List[float]:
-    """Spawns wait_random n times with a specified delay
-    between each call.
-    Args:
-        n: number of times to spawn wait_random
-        max_delay: maximum delay between each call
-    Returns:
-        list of delays
+async def async_generator() -> Generator[float, None, None]:
     """
-    tasks = [task_wait_random(max_delay) for _ in range(n)]
-    return [await task for task in asyncio.as_completed(tasks)]
+    async_generator - function to loop 10 times
+    Arguments:
+        no arguments
+    Returns:
+        nothing
+    """
+    for i in range(10):
+        await asyncio.sleep(1)
+        yield random.uniform(0, 10)
